@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Parcial1.productorconsumidor.philosopherdinner;
+package Parcial1.philosopherdinner;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
@@ -29,11 +29,12 @@ public class Philosopher extends Thread {
     private final String HUNGRY = "Hungry";
     private final String THINKING = "Thinking";
     
-    public Philosopher(byte philosopherId, Semaphore[] semaphoreForks, byte[][] philosopherForks, JLabel label) {
+    public Philosopher(String philosopherName, byte philosopherId, Semaphore[] semaphoreForks, byte[][] philosopherForks, JLabel label) {
         this.sleepTime = new Random();
         this.running = true;
         this.isHungry = false;
         
+        this.setName(philosopherName);
         this.philosopherId = philosopherId;
         this.rightHand = philosopherForks[this.philosopherId][0];
         this.leftHand = philosopherForks[this.philosopherId][1];
@@ -45,6 +46,7 @@ public class Philosopher extends Thread {
         if(semaphoreForks[rightHand].tryAcquire()) {
             if(semaphoreForks[leftHand].tryAcquire()) {
             output.setText(EATING);
+            System.out.println(this.getName() + " is " + EATING);
             isHungry = false;
             try {
                 sleep(sleepTime.nextInt(2000) + 100);
@@ -66,8 +68,12 @@ public class Philosopher extends Thread {
     public void think() {
         if(isHungry) {
             output.setText(HUNGRY);
+            System.out.println(this.getName() + " is " + HUNGRY);
+
         } else {
             output.setText(THINKING);
+            System.out.println(this.getName() + " is " + THINKING);
+
         }
             try {
                 sleep(sleepTime.nextInt(1000) + 100);

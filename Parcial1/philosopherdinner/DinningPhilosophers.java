@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Parcial1.productorconsumidor.philosopherdinner;
+package Parcial1.philosopherdinner;
 
 import java.util.concurrent.Semaphore;
 import javax.swing.JLabel;
@@ -145,7 +145,7 @@ public class DinningPhilosophers extends javax.swing.JFrame {
 
     private void StartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartButtonActionPerformed
         for(byte i = 0; i < philosopherNumber; i++) {
-            philosophersThread[i] = new Philosopher(i, semaphoreForks, philosopherForks, philosophersJLabel[i]);
+            philosophersThread[i] = new Philosopher("Filosofo " + i,i, semaphoreForks, philosopherForks, philosophersJLabel[i]);
             philosophersThread[i].start();
         }
     }//GEN-LAST:event_StartButtonActionPerformed

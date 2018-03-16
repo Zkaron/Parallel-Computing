@@ -19,6 +19,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         almacen = new Almacen(50);
+        
         productor = new Productor(almacen, cantidadAlmacenLabel);
         consumidor = new Consumidor(almacen, cantidadAlmacenLabel);
     }
@@ -177,6 +178,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void consumidorSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_consumidorSliderStateChanged
         if(!consumidorSlider.getValueIsAdjusting()) {
             consumidor.rapidez = consumidorSlider.getValue();
+           
         }
     }//GEN-LAST:event_consumidorSliderStateChanged
 
